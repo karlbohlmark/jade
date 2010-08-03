@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script src="../lib/jade-browser.js"></script>
+  <style>
+  body * {font-family:arial;float:left} 
+  #target, #template {width:400px;height:400px;}
+  </style>
+</head>
+<body>
+  <textarea id="template">
+#container
+  h1 Jade - node template engine
+    h2.myclass - now also in the browser
+</textarea><input type="button" id="render" value="Render >>">
+  <div id="target"></div>
+  <script>
+    var id = function(id){return document.getElementById(id)},
+    render = function(){
+      id('target').innerHTML = jade.render(id('template').value);  
+    };
+    
+    id('render').addEventListener('click', render, false);
+    
+    render();
+  </script>
+</body>
+</html>
